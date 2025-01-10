@@ -4,8 +4,9 @@ def calculate_result(self):
     """Evaluate the expression in the input field."""
     calc_input = self.root.ids.calc_input
     try:
-        result = eval(dec_sum(calc_input.text, self.mode))
-        calc_input.text = str(result)
+        print(convert_sum(calc_input.text, self.mode, Mode.DEC))
+        result = eval(convert_sum(calc_input.text, self.mode, Mode.DEC))
+        calc_input.text = convert_sum(str(result), Mode.DEC, self.mode)
     except Exception:
         calc_input.text = "Error"
 
@@ -13,6 +14,9 @@ def calculate_result(self):
 def convert_sum(string:str, input:Mode, output:Mode)->str:
     if input.value == output.value:
         return string
+
+    if string == "":
+        return ""
 
     nums, symbols = separate(string)
     valid = True
@@ -28,7 +32,6 @@ def convert_sum(string:str, input:Mode, output:Mode)->str:
         return "invalid"
     return combine(nums, symbols)
 
-
 def separate(string:str):
     return get_numbers(string), get_symbols(string)
 
@@ -38,8 +41,6 @@ def combine(lst1:list, lst2:list)->str:
         val += lst1[i] + lst2[i]
     val += lst1[-1]
     return val
-
-
 
 def get_symbols(string:str):
     val = ""

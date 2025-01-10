@@ -15,7 +15,7 @@ def get_kiv_data(file_path:str)->str:
 
 
 class CalculatorApp(MDApp):
-    mode = Mode.HEX
+    mode = Mode.DEC
     def build(self):
         return Builder.load_string(get_kiv_data("kv.yml"))
 
@@ -36,10 +36,14 @@ class CalculatorApp(MDApp):
         """Evaluate the expression in the input field."""
         calc_input = self.root.ids.calc_input
         try:
-            result = eval(calc_input.text)
-            calc_input.text = str(result)
-        except Exception:
+            print(convert_sum(self.root.ids.calc_input.text, self.mode, Mode.DEC))
+            sum = convert_sum(self.root.ids.calc_input.text, self.mode, Mode.DEC)
+            result = eval(sum)
+            calc_input.text = convert_sum(str(result), Mode.DEC, self.mode)
+        except Exception as e:
+            print(e)
             calc_input.text = "Error"
+
 
     def hex_mode(self):
         text = self.root.ids.calc_input.text
