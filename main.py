@@ -42,88 +42,24 @@ class CalculatorApp(MDApp):
             calc_input.text = "Error"
 
     def hex_mode(self):
-        if self.mode = Mode.HEX:
-            return
         text = self.root.ids.calc_input.text
-        nums, symbols = separate(text)
-        valid = True
-
-        for i in range(len(nums)):
-            if(not is_number(nums[i], self.mode)):
-                valid = False
-                break
-            nums[i] = convert(nums[i], self.mode, Mode.HEX)
-
-        if not valid:
-            print("invalid")
-            pass
-        else:
-            self.root.ids.calc_input.text = combine(nums, symbols)
-            self.mode = Mode.HEX
-            self.root.ids.calc_input.text = self.mode
+        self.root.ids.calc_input.text = convert_sum(text, self.mode, Mode.HEX)
+        self.mode = Mode.HEX
 
     def dec_mode(self):
-        if self.mode = Mode.DEC:
-            return
         text = self.root.ids.calc_input.text
-        nums, symbols = separate(text)
-        valid = True
-
-        for i in range(len(nums)):
-            if(not is_number(nums[i], self.mode)):
-                valid = False
-                break
-            nums[i] = convert(nums[i], self.mode, Mode.DEC)
-
-        if not valid:
-            print("invalid")
-            pass
-        else:
-            self.root.ids.calc_input.text = combine(nums, symbols)
-            self.mode = Mode.DEC
+        self.root.ids.calc_input.text = convert_sum(text, self.mode, Mode.DEC)
+        self.mode = Mode.DEC
 
     def oct_mode(self):
-        if self.mode = Mode.OCT:
-            return
         text = self.root.ids.calc_input.text
-        nums, symbols = separate(text)
-        valid = True
-
-        for i in range(len(nums)):
-            if(not is_number(nums[i], self.mode)):
-                valid = False
-                break
-            nums[i] = convert(nums[i], self.mode, Mode.OCT)
-
-        if not valid:
-            print("invalid")
-            pass
-        else:
-            self.root.ids.calc_input.text = combine(nums, symbols)
-            self.mode = Mode.OCT
-            self.root.ids.calc_input.text = self.mode
+        self.root.ids.calc_input.text = convert_sum(text, self.mode, Mode.OCT)
+        self.mode = Mode.OCT
 
     def bin_mode(self):
-        if self.mode = Mode.BIN:
-            return
         text = self.root.ids.calc_input.text
-        nums, symbols = separate(text)
-        valid = True
-
-        for i in range(len(nums)):
-            if(not is_number(nums[i], self.mode)):
-                valid = False
-                break
-            nums[i] = convert(nums[i], self.mode, Mode.BIN)
-
-        if not valid:
-            print("invalid")
-            pass
-        else:
-            self.root.ids.calc_input.text = combine(nums, symbols)
-            self.mode = Mode.BIN
-            self.root.ids.calc_input.text = self.mode
-
+        self.root.ids.calc_input.text = convert_sum(text, self.mode, Mode.BIN)
+        self.mode = Mode.BIN
 
 
 if __name__ == "__main__":

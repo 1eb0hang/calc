@@ -1,8 +1,33 @@
 from conversion import *
 
+def calculate_result(self):
+    """Evaluate the expression in the input field."""
+    calc_input = self.root.ids.calc_input
+    try:
+        result = eval(dec_sum(calc_input.text, self.mode))
+        calc_input.text = str(result)
+    except Exception:
+        calc_input.text = "Error"
 
-def eval_sum(string:str, mode:Mode)->str:
-    pass
+
+def convert_sum(string:str, input:Mode, output:Mode)->str:
+    if input.value == output.value:
+        return string
+
+    nums, symbols = separate(string)
+    valid = True
+
+    for i in range(len(nums)):
+        if(not is_number(nums[i], input)):
+            valid = False
+            break
+        nums[i] = convert(nums[i], input, output)
+
+    if not valid:
+        print("invalid")
+        return "invalid"
+    return combine(nums, symbols)
+
 
 def separate(string:str):
     return get_numbers(string), get_symbols(string)
