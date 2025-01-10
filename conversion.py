@@ -90,7 +90,7 @@ class OCT:
         return val
 \
     def to_bin(string:str):
-        val = int(string, 8)
+        val = bin(int(string, 8))[2:]
         return val
 
     def to_hex(string:str):
