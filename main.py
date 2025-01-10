@@ -26,7 +26,8 @@ class CalculatorApp(MDApp):
     def on_button_click(self, button_text):
         """Append the button text to the input field."""
         calc_input = self.root.ids.calc_input
-        calc_input.text += button_text
+        if(is_number(button_text, self.mode) or button_text in ["+", "-", "*", "/"]):
+            calc_input.text += button_text
 
     def clear_input(self):
         """Clear the input field."""
@@ -40,7 +41,6 @@ class CalculatorApp(MDApp):
         """Evaluate the expression in the input field."""
         calc_input = self.root.ids.calc_input
         try:
-            print(convert_sum(self.root.ids.calc_input.text, self.mode, Mode.DEC))
             sum = convert_sum(self.root.ids.calc_input.text, self.mode, Mode.DEC)
             result = eval(sum)
             calc_input.text = convert_sum(str(result), Mode.DEC, self.mode)

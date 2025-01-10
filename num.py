@@ -45,12 +45,12 @@ def combine(lst1:list, lst2:list)->str:
 def get_symbols(string:str):
     val = ""
     for char in list(string):
-        val+=char if char in ["+","-", "x", "÷"] else ""
+        val+=char if char in ["+","-", "*", "/"] else ""
     return list(val)
 
 def get_numbers(string:str):
     return [l for i in string.split('+') for j in i.split('-')
-        for k in j.split('x') for l in k.split('÷')]
+        for k in j.split('*') for l in k.split('/')]
 
 def is_number(string:str, mode:Mode = Mode.DEC)->bool:
     val = True

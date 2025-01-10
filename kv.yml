@@ -17,6 +17,8 @@ BoxLayout:
         size_hint_y: None
         height: "64dp"
         multiline: False
+        readonly: True
+        disabled: True
 
     MDGridLayout:
         cols: 4
@@ -152,7 +154,7 @@ BoxLayout:
             md_bg_color: (1, 1, 1, 1)
             text_color: (0, 0, 0, 1)
             line_color: (0, 0, 0, 0)
-            on_release: app.on_button_click(self.text)
+            on_release: app.on_button_click("/")
 
 
 
@@ -199,7 +201,7 @@ BoxLayout:
             md_bg_color: (1, 1, 1, 1)
             text_color: (0, 0, 0, 1)
             line_color: (0, 0, 0, 0)
-            on_release: app.on_button_click(self.text)
+            on_release: app.on_button_click("*")
 
 
 

@@ -46,7 +46,7 @@ def convert(string:str, input:Mode, output:Mode):
 
                 case Mode.OCT:
                     val = BIN.to_oct(string)
-    return val.upper()
+    return str(val).upper()
 
 class HEX:
     def __new__(cls):
