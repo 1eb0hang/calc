@@ -5,6 +5,8 @@ from kivymd.uix.button import MDRaisedButton
 from kivymd.uix.textfield import MDTextField
 from num import *
 
+import traceback
+
 def get_kiv_data(file_path:str)->str:
     res = ""
     with open(file_path, "rt") as f:
@@ -41,7 +43,7 @@ class CalculatorApp(MDApp):
             result = eval(sum)
             calc_input.text = convert_sum(str(result), Mode.DEC, self.mode)
         except Exception as e:
-            print(e)
+            traceback.print_exc()
             calc_input.text = "Error"
 
 

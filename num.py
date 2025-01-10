@@ -38,8 +38,8 @@ def separate(string:str):
 def combine(lst1:list, lst2:list)->str:
     val = ""
     for i in range(len(lst2)):
-        val += lst1[i] + lst2[i]
-    val += lst1[-1]
+        val += str(lst1[i]) + str(lst2[i])
+    val += str(lst1[-1])
     return val
 
 def get_symbols(string:str):

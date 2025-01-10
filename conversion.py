@@ -74,11 +74,11 @@ class DEC:
         return str(val)
 
     def to_bin(string:str):
-        val = bin(int(string))
+        val = bin(int(string))[2:]
         return val
 
     def to_oct(string:str):
-        val = oct(int(string))
+        val = oct(int(string))[2:]
         return val
 
 class OCT:
@@ -86,7 +86,7 @@ class OCT:
         return None
 
     def to_dec(string:str):
-        val = hex(int(string, 8))[2:]
+        val = int(string, 8)
         return val
 
     def to_bin(string:str):
