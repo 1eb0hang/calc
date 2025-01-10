@@ -11,6 +11,8 @@ BoxLayout:
         size_hint_y: None
         height: "64dp"
         multiline: False
+        helper_text: app.mode.name
+        helper_text_mode: "persistent"
 
     MDGridLayout:
         cols: 4

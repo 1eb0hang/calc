@@ -4,12 +4,30 @@ from conversion import *
 def eval_sum(string:str, mode:Mode)->str:
     pass
 
+def separate(string:str):
+    return get_numbers(string), get_symbols(string)
+
+def combine(lst1:list, lst2:list)->str:
+    val = ""
+    for i in range(len(lst2)):
+        val += lst1[i] + lst2[i]
+    val += lst1[-1]
+    return val
+
+
+
+def get_symbols(string:str):
+    val = ""
+    for char in list(string):
+        val+=char if char in ["+","-", "x", "÷"] else ""
+    return list(val)
+
 def get_numbers(string:str):
     return [l for i in string.split('+') for j in i.split('-')
         for k in j.split('x') for l in k.split('÷')]
 
 def is_number(string:str, mode:Mode = Mode.DEC)->bool:
-    val = False
+    val = True
     match mode:
         case Mode.HEX:
             val = is_num_hex(string)
@@ -40,14 +58,12 @@ def is_num_hex(string):
 
         if not char.isnumeric() and char != ".":
             if (ord(char) < 65 and ord(char) > 71) or (ord(char) <97 and ord(char) > 102):
-                return False
-
-            if((list(string).index(char) == 0) and (char != "-")):
-                return False
-
-            if((list(string).index(char) != 0) and (char == "-")):
-                return False
-
+                if (list(string).index(char)) == 0:
+                    if (char != "-"):
+                        print("wron leter")
+                        return False
+                else:
+                    return False
     return True
 
 def is_num_dec(string):
