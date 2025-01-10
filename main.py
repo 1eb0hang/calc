@@ -20,6 +20,9 @@ class CalculatorApp(MDApp):
     def build(self):
         return Builder.load_string(get_kiv_data("kv.yml"))
 
+    def on_start(self, **kwargs):
+        self.buttons_set_mode()
+
     def on_button_click(self, button_text):
         """Append the button text to the input field."""
         calc_input = self.root.ids.calc_input
@@ -134,11 +137,16 @@ class CalculatorApp(MDApp):
 
     def buttons_set_oct(self):
         for i in range(16):
-            obj = self.root.ids[f"btn_{hex(i)[2:]}"]
-            obj.md_bg_color = (1, 1, 1, 1)  # Blue background for active
-            obj.text_color = (0, 0, 0, 1)   # White text for active
-            obj.line_color = (0, 0, 0, 0)   # White outline for active
-            # self.root.ids[f"btn_{hex(i)[2:]}"] = obj
+            if is_number(str(hex(i)[2:]), Mode.OCT):
+                obj = self.root.ids[f"btn_{hex(i)[2:]}"]
+                obj.md_bg_color = (1, 1, 1, 1)  # Blue background for active
+                obj.text_color = (0, 0, 0, 1)   # White text for active
+                obj.line_color = (0, 0, 0, 0)   # White outline for active
+            else:
+                obj = self.root.ids[f"btn_{hex(i)[2:]}"]
+                obj.md_bg_color = (0.8, 0.8, 0.8, 1)  # Blue background for active
+                obj.text_color = (0.3, 0.3, 0.3, 1)   # White text for active
+                obj.line_color = (0, 0, 0, 0)   # White outline for active
 
         obj = self.root.ids[f"btn_00"]
         obj.md_bg_color = (1, 1, 1, 1)  # Blue background for active
@@ -147,11 +155,16 @@ class CalculatorApp(MDApp):
 
     def buttons_set_bin(self):
         for i in range(16):
-            obj = self.root.ids[f"btn_{hex(i)[2:]}"]
-            obj.md_bg_color = (1, 1, 1, 1)  # Blue background for active
-            obj.text_color = (0, 0, 0, 1)   # White text for active
-            obj.line_color = (0, 0, 0, 0)   # White outline for active
-            # self.root.ids[f"btn_{hex(i)[2:]}"] = obj
+            if is_number(str(hex(i)[2:]), Mode.BIN):
+                obj = self.root.ids[f"btn_{hex(i)[2:]}"]
+                obj.md_bg_color = (1, 1, 1, 1)  # Blue background for active
+                obj.text_color = (0, 0, 0, 1)   # White text for active
+                obj.line_color = (0, 0, 0, 0)   # White outline for active
+            else:
+                obj = self.root.ids[f"btn_{hex(i)[2:]}"]
+                obj.md_bg_color = (0.8, 0.8, 0.8, 1)  # Blue background for active
+                obj.text_color = (0.3, 0.3, 0.3, 1)   # White text for active
+                obj.line_color = (0, 0, 0, 0)   # White outline for active
 
         obj = self.root.ids[f"btn_00"]
         obj.md_bg_color = (1, 1, 1, 1)  # Blue background for active
