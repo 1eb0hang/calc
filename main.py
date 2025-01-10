@@ -3,8 +3,7 @@ from kivy.uix.boxlayout import BoxLayout
 from kivymd.app import MDApp
 from kivymd.uix.button import MDRaisedButton
 from kivymd.uix.textfield import MDTextField
-
-from enum import Enum
+from num import *
 
 def get_kiv_data(file_path:str)->str:
     res = ""
@@ -12,14 +11,11 @@ def get_kiv_data(file_path:str)->str:
         res = f.read()
     return res
 
-class Mode(Enum):
-    HEX = 1
-    DEC = 2
-    OCT = 3
-    BIN = 4
+
 
 
 class CalculatorApp(MDApp):
+    mode = Mode.DEC
     def build(self):
         return Builder.load_string(get_kiv_data("kv.yml"))
 
@@ -46,19 +42,32 @@ class CalculatorApp(MDApp):
             calc_input.text = "Error"
 
     def hex_mode(self):
-        self.root.ids.calc_input.text = ""
+        text = self.root.ids.calc_input.text
+        nums = get_numbers(text)
+        valid = True
+        for i in range(len(nums)):
+            if(not is_num_hex(nums[i])):
+                valid = False
+                break
+            nums[i] = DEC.to_hex(nums[i])
+
+        if not valid:
+            # pop up
+            pass
+        else:
+            self.root.ids.calc_input.text = " ".join(nums)
 
     def dec_mode(self):
-        return 100
+        text = self.root.ids.calc_input.text
+        t = [j for i in ip.split('+') for j in i.split('.')]
+        print(t)
 
     def oct_mode(self):
-        return 100
+        pass
 
     def bin_mode(self):
-        return 100
-
-    def eval_sum(mode:Mode)->str:
         pass
+
 
 
 if __name__ == "__main__":
