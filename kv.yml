@@ -2,6 +2,12 @@ BoxLayout:
     orientation: 'vertical'
     spacing: 10
     padding: 10
+    canvas.before:
+        Color:
+            rgba: 0.9, 0.9, 0.9, 1  # Light grey color
+        Rectangle:
+            pos: self.pos
+            size: self.size
 
     MDTextField:
         id: calc_input
@@ -11,8 +17,6 @@ BoxLayout:
         size_hint_y: None
         height: "64dp"
         multiline: False
-        helper_text: app.mode.name
-        helper_text_mode: "persistent"
 
     MDGridLayout:
         cols: 4
@@ -20,24 +24,40 @@ BoxLayout:
         adaptive_height: True
 
         MDRectangleFlatButton:
+            id: hex_button
             text: "HEX"
             _min_width: "69dp"
-            on_release: app.hex_mode()
+            md_bg_color: (1, 1, 1, 1)
+            text_color: (0, 0, 0, 1)
+            line_color: (0, 0, 0, 0)
+            on_release: app.hex_mode(self)
 
         MDRectangleFlatButton:
+            id: dec_button
             text: "DEC"
             _min_width: "70dp"
-            on_release: app.dec_mode()
+            md_bg_color: (1, 1, 1, 1)
+            text_color: (0, 0, 0, 1)
+            line_color: (0, 0, 0, 0)
+            on_release: app.dec_mode(self)
 
         MDRectangleFlatButton:
+            id: oct_button
             text: "OCT"
             _min_width: "70dp"
-            on_release: app.oct_mode()
+            md_bg_color: (1, 1, 1, 1)
+            text_color: (0, 0, 0, 1)
+            line_color: (0, 0, 0, 0)
+            on_release: app.oct_mode(self)
 
         MDRectangleFlatButton:
+            id: bin_button
             text: "BIN"
             _min_width: "70dp"
-            on_release: app.bin_mode()
+            md_bg_color: (1, 1, 1, 1)
+            text_color: (0, 0, 0, 1)
+            line_color: (0, 0, 0, 0)
+            on_release: app.bin_mode(self)
 
 
     MDGridLayout:
@@ -49,21 +69,33 @@ BoxLayout:
         MDRectangleFlatButton:
             text: "D"
             _min_width: "50dp"
+            md_bg_color: (1, 1, 1, 1)
+            text_color: (0, 0, 0, 1)
+            line_color: (0, 0, 0, 0)
             on_release: app.on_button_click(self.text)
 
         MDRectangleFlatButton:
             text: "E"
             _min_width: "50dp"
+            md_bg_color: (1, 1, 1, 1)
+            text_color: (0, 0, 0, 1)
+            line_color: (0, 0, 0, 0)
             on_release: app.on_button_click(self.text)
 
         MDRectangleFlatButton:
             text: "F"
             _min_width: "50dp"
+            md_bg_color: (1, 1, 1, 1)
+            text_color: (0, 0, 0, 1)
+            line_color: (0, 0, 0, 0)
             on_release: app.on_button_click(self.text)
 
         MDRectangleFlatButton:
             text: "<-"
             _min_width: "60dp"
+            md_bg_color: (1, 1, 1, 1)
+            text_color: (0, 0, 0, 1)
+            line_color: (0, 0, 0, 0)
             on_release: app.backspace()
 
         MDRectangleFlatButton:
@@ -76,26 +108,41 @@ BoxLayout:
         MDRectangleFlatButton:
             text: "A"
             _min_width: "50dp"
+            md_bg_color: (1, 1, 1, 1)
+            text_color: (0, 0, 0, 1)
+            line_color: (0, 0, 0, 0)
             on_release: app.on_button_click(self.text)
 
         MDRectangleFlatButton:
             text: "B"
             _min_width: "50dp"
+            md_bg_color: (1, 1, 1, 1)
+            text_color: (0, 0, 0, 1)
+            line_color: (0, 0, 0, 0)
             on_release: app.on_button_click(self.text)
 
         MDRectangleFlatButton:
             text: "C"
             _min_width: "50dp"
+            md_bg_color: (1, 1, 1, 1)
+            text_color: (0, 0, 0, 1)
+            line_color: (0, 0, 0, 0)
             on_release: app.on_button_click(self.text)
 
         MDRectangleFlatButton:
             text: "NOT"
             _min_width: "60dp"
+            md_bg_color: (1, 1, 1, 1)
+            text_color: (0, 0, 0, 1)
+            line_color: (0, 0, 0, 0)
             on_release: app.on_button_click(self.text)
 
         MDRectangleFlatButton:
             text: "÷"
             _min_width: "40dp"
+            md_bg_color: (1, 1, 1, 1)
+            text_color: (0, 0, 0, 1)
+            line_color: (0, 0, 0, 0)
             on_release: app.on_button_click(self.text)
 
 
@@ -103,26 +150,41 @@ BoxLayout:
         MDRectangleFlatButton:
             text: "7"
             _min_width: "50dp"
+            md_bg_color: (1, 1, 1, 1)
+            text_color: (0, 0, 0, 1)
+            line_color: (0, 0, 0, 0)
             on_release: app.on_button_click(self.text)
 
         MDRectangleFlatButton:
             text: "8"
             _min_width: "50dp"
+            md_bg_color: (1, 1, 1, 1)
+            text_color: (0, 0, 0, 1)
+            line_color: (0, 0, 0, 0)
             on_release: app.on_button_click(self.text)
 
         MDRectangleFlatButton:
             text: "9"
             _min_width: "50dp"
+            md_bg_color: (1, 1, 1, 1)
+            text_color: (0, 0, 0, 1)
+            line_color: (0, 0, 0, 0)
             on_release: app.on_button_click(self.text)
 
         MDRectangleFlatButton:
             text: "AND"
             _min_width: "60dp"
+            md_bg_color: (1, 1, 1, 1)
+            text_color: (0, 0, 0, 1)
+            line_color: (0, 0, 0, 0)
             on_release: app.on_button_click(self.text)
 
         MDRectangleFlatButton:
             text: "x"
             _min_width: "40dp"
+            md_bg_color: (1, 1, 1, 1)
+            text_color: (0, 0, 0, 1)
+            line_color: (0, 0, 0, 0)
             on_release: app.on_button_click(self.text)
 
 
@@ -130,26 +192,41 @@ BoxLayout:
         MDRectangleFlatButton:
             text: "4"
             _min_width: "50dp"
+            md_bg_color: (1, 1, 1, 1)
+            text_color: (0, 0, 0, 1)
+            line_color: (0, 0, 0, 0)
             on_release: app.on_button_click(self.text)
 
         MDRectangleFlatButton:
             text: "5"
             _min_width: "50dp"
+            md_bg_color: (1, 1, 1, 1)
+            text_color: (0, 0, 0, 1)
+            line_color: (0, 0, 0, 0)
             on_release: app.on_button_click(self.text)
 
         MDRectangleFlatButton:
             text: "6"
             _min_width: "50dp"
+            md_bg_color: (1, 1, 1, 1)
+            text_color: (0, 0, 0, 1)
+            line_color: (0, 0, 0, 0)
             on_release: app.on_button_click(self.text)
 
         MDRectangleFlatButton:
             text: "XOR"
             _min_width: "60dp"
+            md_bg_color: (1, 1, 1, 1)
+            text_color: (0, 0, 0, 1)
+            line_color: (0, 0, 0, 0)
             on_release: app.on_button_click(self.text)
 
         MDRectangleFlatButton:
             text: "-"
             _min_width: "40dp"
+            md_bg_color: (1, 1, 1, 1)
+            text_color: (0, 0, 0, 1)
+            line_color: (0, 0, 0, 0)
             on_release: app.on_button_click(self.text)
 
 
@@ -158,26 +235,41 @@ BoxLayout:
         MDRectangleFlatButton:
             text: "1"
             _min_width: "50dp"
+            md_bg_color: (1, 1, 1, 1)
+            text_color: (0, 0, 0, 1)
+            line_color: (0, 0, 0, 0)
             on_release: app.on_button_click(self.text)
 
         MDRectangleFlatButton:
             text: "2"
             _min_width: "50dp"
+            md_bg_color: (1, 1, 1, 1)
+            text_color: (0, 0, 0, 1)
+            line_color: (0, 0, 0, 0)
             on_release: app.on_button_click(self.text)
 
         MDRectangleFlatButton:
             text: "3"
             _min_width: "50dp"
+            md_bg_color: (1, 1, 1, 1)
+            text_color: (0, 0, 0, 1)
+            line_color: (0, 0, 0, 0)
             on_release: app.on_button_click(self.text)
 
         MDRectangleFlatButton:
             text: "OR"
             _min_width: "60dp"
+            md_bg_color: (1, 1, 1, 1)
+            text_color: (0, 0, 0, 1)
+            line_color: (0, 0, 0, 0)
             on_release: app.on_button_click(self.text)
 
         MDRectangleFlatButton:
             text: "+"
             _min_width: "40dp"
+            md_bg_color: (1, 1, 1, 1)
+            text_color: (0, 0, 0, 1)
+            line_color: (0, 0, 0, 0)
             on_release: app.on_button_click(self.text)
 
 
@@ -186,24 +278,39 @@ BoxLayout:
         MDRectangleFlatButton:
             text: "C"
             _min_width: "50dp"
+            md_bg_color: (1, 1, 1, 1)
+            text_color: (0, 0, 0, 1)
+            line_color: (0, 0, 0, 0)
             on_release: app.clear_input()
 
         MDRectangleFlatButton:
             text: "0"
             _min_width: "50dp"
+            md_bg_color: (1, 1, 1, 1)
+            text_color: (0, 0, 0, 1)
+            line_color: (0, 0, 0, 0)
             on_release: app.on_button_click(self.text)
 
         MDRectangleFlatButton:
             text: "00"
             _min_width: "50dp"
+            md_bg_color: (1, 1, 1, 1)
+            text_color: (0, 0, 0, 1)
+            line_color: (0, 0, 0, 0)
             on_release: app.on_button_click(self.text)
 
         MDRectangleFlatButton:
             text: "="
             _min_width: "60dp"
+            md_bg_color: (1, 1, 1, 1)
+            text_color: (0, 0, 0, 1)
+            line_color: (0, 0, 0, 0)
             on_release: app.calculate_result()
 
         MDRectangleFlatButton:
             text: "="
             _min_width: "40dp"
+            md_bg_color: (1, 1, 1, 1)
+            text_color: (0, 0, 0, 1)
+            line_color: (0, 0, 0, 0)
             on_release: app.calculate_result()

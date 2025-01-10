@@ -15,7 +15,6 @@ def get_kiv_data(file_path:str)->str:
 
 
 
-
 class CalculatorApp(MDApp):
     mode = Mode.DEC
     def build(self):
@@ -46,26 +45,48 @@ class CalculatorApp(MDApp):
             traceback.print_exc()
             calc_input.text = "Error"
 
+    def toggle_mode(self, button):
+        """Handle toggle behavior for the mode buttons."""
+        # Reset the style of all buttons
+        button_ids = ["hex_button", "dec_button", "oct_button", "bin_button"]
+        for btn_id in button_ids:
+            btn = self.root.ids[btn_id]
+            btn.md_bg_color = (1, 1, 1, 1)  # Reset to default background color
+            btn.text_color = (0, 0, 0, 1)   # Reset to default text color
+            btn.line_color = (0, 0, 0, 0)   # Remove outline
 
-    def hex_mode(self):
+        # Style the selected button
+        button.md_bg_color = (0, 0, 1, 1)  # Blue background for active
+        button.text_color = (1, 1, 1, 1)   # White text for active
+        button.line_color = (1, 1, 1, 1)   # White outline for active
+
+    # Update the active mode
+    # print(f"Active mode: {self.mode.name}")
+
+
+    def hex_mode(self, button):
         text = self.root.ids.calc_input.text
         self.root.ids.calc_input.text = convert_sum(text, self.mode, Mode.HEX)
         self.mode = Mode.HEX
+        self.toggle_mode(button)
 
-    def dec_mode(self):
+    def dec_mode(self, button):
         text = self.root.ids.calc_input.text
         self.root.ids.calc_input.text = convert_sum(text, self.mode, Mode.DEC)
         self.mode = Mode.DEC
+        self.toggle_mode(button)
 
-    def oct_mode(self):
+    def oct_mode(self, button):
         text = self.root.ids.calc_input.text
         self.root.ids.calc_input.text = convert_sum(text, self.mode, Mode.OCT)
         self.mode = Mode.OCT
+        self.toggle_mode(button)
 
-    def bin_mode(self):
+    def bin_mode(self, button):
         text = self.root.ids.calc_input.text
         self.root.ids.calc_input.text = convert_sum(text, self.mode, Mode.BIN)
         self.mode = Mode.BIN
+        self.toggle_mode(button)
 
 
 if __name__ == "__main__":
