@@ -6,46 +6,46 @@ def convert(string:str, input:Mode, output:Mode):
         case Mode.HEX:
             match output:
                 case Mode.DEC:
-                    val = HEX.to_dec(text)
+                    val = HEX.to_dec(string)
 
                 case Mode.OCT:
-                    val = HEX.to_oct(text)
+                    val = HEX.to_oct(string)
 
                 case Mode.BIN:
-                    val = HEX.to_bin(text)
+                    val = HEX.to_bin(string)
 
         case Mode.DEC:
-            match mode:
+            match output:
                 case Mode.HEX:
-                    val = DEC.to_hex(text)
+                    val = DEC.to_hex(string)
 
                 case Mode.OCT:
-                    val = DEC.to_oct(text)
+                    val = DEC.to_oct(string)
 
                 case Mode.BIN:
-                    val = DEC.to_bin(text)
+                    val = DEC.to_bin(string)
 
         case Mode.OCT:
-            match mode:
+            match output:
                 case Mode.HEX:
-                    val = OCT.to_hex(text)
+                    val = OCT.to_hex(string)
 
                 case Mode.DEC:
-                    val = OCT.to_dec(text)
+                    val = OCT.to_dec(string)
 
                 case Mode.BIN:
-                    val = OCT.to_bin(text)
+                    val = OCT.to_bin(string)
 
         case Mode.BIN:
-            match mode:
+            match output:
                 case Mode.HEX:
-                    val = BIN.to_hex(text)
+                    val = BIN.to_hex(string)
 
                 case Mode.DEC:
-                    val = BIN.to_dec(text)
+                    val = BIN.to_dec(string)
 
                 case Mode.OCT:
-                    val = BIN.to_oct(text)
+                    val = BIN.to_oct(string)
     return val
 
 class HEX:
@@ -69,7 +69,7 @@ class DEC:
 
     def to_hex(string:str):
         val = int(string)
-        val = hex(val)
+        val = hex(val)[2:]
         return str(val)
 
     def to_bin(string:str):

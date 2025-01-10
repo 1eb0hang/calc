@@ -46,10 +46,10 @@ class CalculatorApp(MDApp):
         nums = get_numbers(text)
         valid = True
         for i in range(len(nums)):
-            if(not is_num_hex(nums[i])):
+            if(not is_number(nums[i], self.mode)):
                 valid = False
                 break
-            nums[i] = DEC.to_hex(nums[i])
+            nums[i] = convert(nums[i], self.mode, Mode.HEX)
 
         if not valid:
             # pop up
