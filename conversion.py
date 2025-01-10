@@ -88,7 +88,7 @@ class OCT:
     def to_dec(string:str):
         val = int(string, 8)
         return val
-
+\
     def to_bin(string:str):
         val = int(string, 8)
         return val
