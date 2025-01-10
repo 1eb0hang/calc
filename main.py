@@ -56,13 +56,11 @@ class CalculatorApp(MDApp):
             btn.line_color = (0, 0, 0, 0)   # Remove outline
 
         # Style the selected button
-        button.md_bg_color = (0, 0, 1, 1)  # Blue background for active
+        button.md_bg_color = (0.3, 0.5, 1, 1)  # Blue background for active
         button.text_color = (1, 1, 1, 1)   # White text for active
-        button.line_color = (1, 1, 1, 1)   # White outline for active
+        button.line_color = (0, 0, 0, 0)   # White outline for active
 
-    # Update the active mode
-    # print(f"Active mode: {self.mode.name}")
-
+        self.buttons_set_mode()
 
     def hex_mode(self, button):
         text = self.root.ids.calc_input.text
@@ -87,6 +85,79 @@ class CalculatorApp(MDApp):
         self.root.ids.calc_input.text = convert_sum(text, self.mode, Mode.BIN)
         self.mode = Mode.BIN
         self.toggle_mode(button)
+
+    def buttons_set_mode(self):
+        match self.mode:
+            case Mode.HEX:
+                self.buttons_set_hex()
+
+            case Mode.DEC:
+                self.buttons_set_dec()
+
+            case Mode.OCT:
+                self.buttons_set_oct()
+
+            case Mode.BIN:
+                self.buttons_set_bin()
+
+    def buttons_set_hex(self):
+        # print(self.root.ids["btn_1"])
+        for i in range(16):
+            obj = self.root.ids[f"btn_{hex(i)[2:]}"]
+            obj.md_bg_color = (1, 1, 1, 1)  # Blue background for active
+            obj.text_color = (0, 0, 0, 1)   # White text for active
+            obj.line_color = (0, 0, 0, 0)   # White outline for active
+            # self.root.ids[f"btn_{hex(i)[2:]}"] = obj
+
+        obj = self.root.ids[f"btn_00"]
+        obj.md_bg_color = (1, 1, 1, 1)  # Blue background for active
+        obj.text_color = (0, 0, 0, 1)   # White text for active
+        obj.line_color = (0, 0, 0, 0)   # White outline for active
+
+    def buttons_set_dec(self):
+        for i in range(16):
+            if is_number(str(hex(i)[2:]), Mode.DEC):
+                obj = self.root.ids[f"btn_{hex(i)[2:]}"]
+                obj.md_bg_color = (1, 1, 1, 1)  # Blue background for active
+                obj.text_color = (0, 0, 0, 1)   # White text for active
+                obj.line_color = (0, 0, 0, 0)   # White outline for active
+            else:
+                obj = self.root.ids[f"btn_{hex(i)[2:]}"]
+                obj.md_bg_color = (0.8, 0.8, 0.8, 1)  # Blue background for active
+                obj.text_color = (0.3, 0.3, 0.3, 1)   # White text for active
+                obj.line_color = (0, 0, 0, 0)   # White outline for active
+
+        obj = self.root.ids[f"btn_00"]
+        obj.md_bg_color = (1, 1, 1, 1)  # Blue background for active
+        obj.text_color = (0, 0, 0, 1)   # White text for active
+        obj.line_color = (0, 0, 0, 0)   # White outline for active
+
+    def buttons_set_oct(self):
+        for i in range(16):
+            obj = self.root.ids[f"btn_{hex(i)[2:]}"]
+            obj.md_bg_color = (1, 1, 1, 1)  # Blue background for active
+            obj.text_color = (0, 0, 0, 1)   # White text for active
+            obj.line_color = (0, 0, 0, 0)   # White outline for active
+            # self.root.ids[f"btn_{hex(i)[2:]}"] = obj
+
+        obj = self.root.ids[f"btn_00"]
+        obj.md_bg_color = (1, 1, 1, 1)  # Blue background for active
+        obj.text_color = (0, 0, 0, 1)   # White text for active
+        obj.line_color = (0, 0, 0, 0)   # White outline for active
+
+    def buttons_set_bin(self):
+        for i in range(16):
+            obj = self.root.ids[f"btn_{hex(i)[2:]}"]
+            obj.md_bg_color = (1, 1, 1, 1)  # Blue background for active
+            obj.text_color = (0, 0, 0, 1)   # White text for active
+            obj.line_color = (0, 0, 0, 0)   # White outline for active
+            # self.root.ids[f"btn_{hex(i)[2:]}"] = obj
+
+        obj = self.root.ids[f"btn_00"]
+        obj.md_bg_color = (1, 1, 1, 1)  # Blue background for active
+        obj.text_color = (0, 0, 0, 1)   # White text for active
+        obj.line_color = (0, 0, 0, 0)   # White outline for active
+
 
 
 if __name__ == "__main__":
